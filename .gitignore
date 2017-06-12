@@ -1,0 +1,12 @@
+*.pyc
+settings.py
+.env
+
+*.sqlite3*
+/media
+production.py
+/prodstatic
+
+.vscode/
+.DS_Store
+
