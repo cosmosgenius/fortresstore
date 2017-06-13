@@ -119,3 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+GOOGLE_PLAY_URL = 'https://play.google.com'
+GOOGLE_PLAY_SEARCH_URL = GOOGLE_PLAY_URL + '/store/search?q={}'
+GOOGLE_PLAY_APP_ID = GOOGLE_PLAY_URL + '/store/apps/details?id={}'
