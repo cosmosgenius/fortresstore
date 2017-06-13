@@ -1,6 +1,6 @@
 import re
 import requests
-
+from decimal import Decimal
 from django.conf import settings
 from bs4 import BeautifulSoup
 
@@ -33,7 +33,10 @@ class ParsedApp:
     @property
     def price(self):
         price_span = self.app_soup.find('span', class_='display-price')
-        return price_span.getText()
+        reg_list = re.findall('\d+.?\d*', price_span.getText())
+        if(reg_list):
+            return Decimal(reg_list[0])
+        return Decimal(0)
 
     @property
     def rating(self):
