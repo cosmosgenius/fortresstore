@@ -17,15 +17,15 @@
                         <div class="col-6">
                             <div class="card-block">
                                 <h4 class="card-title appcard__title">{{ app.name }}</h4>
+                                <p>{{app.description}}</p>
+                                <a class="btn btn-info appdetails__playstorelink" href="{{ app.url }}" >View in PlayStore</a>
                             </div>
-                            <div> {{app.description}} </div>
-                            <a class="btn btn-info appdetails__playstorelink" href="{{ app.url }}" >View in PlayStore</a>
                         </div>
-                        <div class="col">
-                            <div class="appdetails__rating">
+                        <div class="col appdetails__rating">
+                            <div class="appdetails__ratingvalue">
                                 {{ app.rating | floatformat:1 }}
                             </div>
-                            <div class="appdetails__star-back" >
+                            <div class="appdetails__star-back">
                                 <div class="appdetails__star-front" style="width: {% widthratio app.rating 5.0 100 %}%"></div>
                             </div>
                         </div>

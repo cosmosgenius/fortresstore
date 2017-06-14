@@ -8,11 +8,12 @@ $star-height: 24px;
     //     right: 0;
     //     margin: 0.5em;
     // }
-    &__rating{
+    &__ratingvalue {
         font-size: 3em;
     }
     &__description {
         margin-top: 2em;
+        margin-bottom: 4em;
     }
     &__star-back {
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABpUlEQVR4Ae3WAWQCURzH8a4ZjG3DtjEACwUQAihRwIAIQAJApCC2gAQQgEQQIvoCBWEDIJTFRiEEkQJa0S2ZU6W9u3d3DL0fcHd+H967/zmHanNOwL8CxAs/fuFDpoAKFRsBbvle59Y+IIm6TtImAIWvDfCJYg8QRP1N0B6gqgFVGwDuWWjAgnvrgTTqVtIWAzjp7wB9nNYCIdS9hKwFagdAzQKAO9wEiJJgeQAsSRAlgJs73QARUuQp06DNSCsVZ8mINg3K5EkROQ4EmaGazIzgH1uEl7Gp+jFewRnwxEC6fsCTjkPmkY5UfYdHnW8R17wbrn/j2sBrygV1Q/V1LgzOAWeUdNeXOJMYNBRyuupzKNKfCl6F9S+mvkXEhUDcHFAUAkVzQE8I9EwA3LASAitu5IEwqo6E5YGsLiArDzT3qoY8rzPcu9qUBHAy3dnrApeb65cUds5milMO8GyVdPHt3PPR3brrkQK0IZuT4fxg+87JMNeGzTigDVkLl+PIwkVLGzYJ4IMJMRTBH3eMCT0JgCsqPDh0LB6ocCUA7MwJOAHm8wPsMX8q/r3eswAAAABJRU5ErkJggg==);
@@ -31,7 +32,7 @@ $star-height: 24px;
         height: $star-height;
     }
 
-    &__imgwrapper {
+    &__imgwrapper, &__rating {
         margin: auto;
     }
 }
