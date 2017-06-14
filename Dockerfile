@@ -1,7 +1,7 @@
 FROM python:3.6.1
 
 WORKDIR /usr/src/app
-RUN export DATABASE_URL=sqlite:////usr/src/app/db.sqlite3
+ENV DATABASE_URL sqlite:////usr/src/app/db.sqlite3
 
 COPY . .
 
