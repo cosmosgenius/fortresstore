@@ -1,0 +1,13 @@
+.scroller {
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    justify-content: space-between;
+
+    &__item {
+        margin-left: 1em;
+        &:first-child {
+            margin-left: 0em;
+        }
+    }
+}
