@@ -13,6 +13,7 @@ class App(models.Model):
     app_id = models.CharField(max_length=500, unique=True)
     name = models.CharField(max_length=500)
     description = models.TextField()
+    detail_info = models.TextField()
     price = models.DecimalField(decimal_places=4, max_digits=10)
     rating = models.DecimalField(decimal_places=2, max_digits=5)
     cover_large = models.ImageField()
