@@ -3,7 +3,10 @@ import requests
 from decimal import Decimal
 from django.conf import settings
 from bs4 import BeautifulSoup
-from core.models import App
+from core.models import (
+    App, Developer,
+    Screenshot
+)
 
 
 def fetch_play_html(search_terms):
@@ -146,16 +149,34 @@ def get_or_create_app(parsed_app):
     app = App.objects.filter(app_id=parsed_app.doc_id).first()
     if app:
         return app
+
+    developer = Developer.objects.filter(
+        email__iexact=parsed_app.developer_email
+    ).first()
+
+    if not developer:
+        developer = Developer.objects.create(
+            email=parsed_app.developer_email,
+            name=parsed_app.developer_title,
+            url=parsed_app.developer_url
+        )
+
     app = App.objects.create(
         app_id=parsed_app.doc_id,
         description=parsed_app.description,
         url=parsed_app.url,
         rating=parsed_app.rating,
         name=parsed_app.title,
-        developer_name=parsed_app.developer_title,
-        developer_url=parsed_app.developer_url,
         price=parsed_app.price,
         cover_large=parsed_app.cover_large,
-        cover_small=parsed_app.cover_small
+        cover_small=parsed_app.cover_small,
+        detail_info=parsed_app.info,
+        developer=developer
     )
+
+    for screen_url in parsed_app.screenshots:
+        Screenshot.objects.create(
+            url=screen_url,
+            app=app
+        )
     return app
