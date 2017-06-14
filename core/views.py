@@ -8,7 +8,7 @@ class SearchView(TemplateView):
 
 
 class AppsView(TemplateView):
-    template_name = "core/apps.html"
+    template_name = "core/appslist.html"
 
     def dispatch(self, request, **kwargs):
         query_string = self.request.GET.get('q', '')
@@ -24,4 +24,4 @@ class AppsView(TemplateView):
 
 
 class AppView(TemplateView):
-    template_name = "core/app.html"
+    template_name = "core/appdetail.html"

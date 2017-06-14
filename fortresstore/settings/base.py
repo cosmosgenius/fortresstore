@@ -125,6 +125,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 GOOGLE_PLAY_URL = 'https://play.google.com'
 GOOGLE_PLAY_SEARCH_URL = GOOGLE_PLAY_URL + '/store/search?q={}'
 GOOGLE_PLAY_APP_ID = GOOGLE_PLAY_URL + '/store/apps/details?id={}'

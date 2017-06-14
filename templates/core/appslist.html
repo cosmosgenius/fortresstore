@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <section class="row applist">
+        {% for app in apps %}
+            {% include "core/partials/appcard.html" with app=app %}
+        {% endfor %}
+    </section>
+
+{% endblock %}

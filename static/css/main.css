@@ -1,0 +1,12 @@
+.appcard {
+  padding: 1em; }
+  .appcard__wrapper {
+    height: 100%; }
+  .appcard__img {
+    width: 100%;
+    height: auto;
+    max-width: 170px;
+    margin: auto; }
+
+.applist {
+  margin-top: 2rem; }

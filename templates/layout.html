@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 
 {% block layout %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-8">
-                {% block content %} {% endblock %}
-            </div>
-        </div>
-    </div>
+    <main class="container">
+        {% block content %} {% endblock %}
+    </main>
 {% endblock %}
