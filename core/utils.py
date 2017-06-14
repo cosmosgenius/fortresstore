@@ -3,6 +3,7 @@ import requests
 from decimal import Decimal
 from django.conf import settings
 from bs4 import BeautifulSoup
+from core.models import App
 
 
 class ParsedApp:
