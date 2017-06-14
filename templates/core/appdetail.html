@@ -3,26 +3,51 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <a class="btn btn-secondary" href="{{request.META.HTTP_REFERER}}">&#8592; Back</a>
+    <div class="appdetails">
+        <a class="btn btn-secondary" href="{{request.META.HTTP_REFERER}}">&#8592; Back</a>
 
-    <div class="row">
-        <div class="col-sm-12 appcard">
-            <a class="link-silent" href="{{ app.get_absolute_url }}">
-            <div class="card text-center appcard__wrapper">
-                <img class="card-img-top appcard__img" src="{{ app.cover_small }}" alt="{{ app.name }}">
-                <div class="card-block">
-                    <h4 class="card-title appcard__title">{{ app.name }}</h4>
-                    <p class="card-text appcard__description">{{ app.description }}</p>
+        <div class="row">
+            <div class="col-sm-12 appcard">
+
+                <div class="card text-center appcard__wrapper">
+                    <div class="row">
+                        <div class="col appdetails__imgwrapper">
+                            <img class="card-img-top appcard__img" src="{{ app.cover_small }}" alt="{{ app.name }}">
+                        </div>
+                        <div class="col-6">
+                            <div class="card-block">
+                                <h4 class="card-title appcard__title">{{ app.name }}</h4>
+                            </div>
+                            <div> {{app.description}} </div>
+                            <a class="btn btn-info appdetails__playstorelink" href="{{ app.url }}" >View in PlayStore</a>
+                        </div>
+                        <div class="col">
+                            <div class="appdetails__rating">
+                                {{ app.rating | floatformat:1 }}
+                            </div>
+                            <div class="appdetails__star-back" >
+                                <div class="appdetails__star-front" style="width: {% widthratio app.rating 5.0 100 %}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-footer">
+                            <a href="{{ app.developer.url }}"class="card-link">{{ app.developer.name }}</a><br>
+                            <a href="mailto:{{ app.developer.email }}">{{ app.developer.email }}</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            </a>
         </div>
-    </div>
-    <div class="scroller">
-    {% for screen in app.screenshots.all %}
-        <img class="scroller__item" src="{{ screen.url }}"/>
-    {% endfor %}
-    </div>
+        <div class="scroller">
+        {% for screen in app.screenshots.all %}
+            <img class="scroller__item" src="{{ screen.url }}"/>
+        {% endfor %}
+        </div>
+
+        <section class="card-text appdetails__description">{{ app.detail_info | safe }}</section>
+    <div>
 {% endblock %}
 
 
