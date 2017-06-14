@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from taggit.managers import TaggableManager
 
 
@@ -16,3 +17,9 @@ class App(models.Model):
     url = models.URLField()
 
     tags = TaggableManager()
+
+    def get_absolute_url(self):
+        return '{}?id={}'.format(
+            reverse('app-detail'),
+            self.app_id
+        )

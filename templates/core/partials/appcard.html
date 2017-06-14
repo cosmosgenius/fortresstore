@@ -1,4 +1,5 @@
 <div class="col-sm-6 col-md-4 col-lg-3 appcard">
+    <a class="link-silent" href="{{ app.get_absolute_url }}">
     <div class="card text-center appcard__wrapper">
         <img class="card-img-top appcard__img" src="{{ app.cover_small }}" alt="{{ app.name }}">
         <div class="card-block">
@@ -6,4 +7,6 @@
             <p class="card-text appcard__description">{{ app.description }}</p>
         </div>
     </div>
+    </a>
 </div>
+
