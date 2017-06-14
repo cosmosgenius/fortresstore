@@ -1,3 +1,4 @@
+beautifulsoup4==4.6.0
 Django==1.11.2
 django-environ==0.4.3
 django-extensions==1.7.9
