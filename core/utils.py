@@ -6,12 +6,31 @@ from bs4 import BeautifulSoup
 from core.models import App
 
 
+def fetch_play_html(search_terms):
+    SEARCH_URL = settings.GOOGLE_PLAY_SEARCH_URL
+    URL = SEARCH_URL.format(search_terms)
+    return fetch_html(URL)
+
+
+def fetch_html(url):
+    return requests.get(url).content
+
+
+def get_detail_soup(url):
+    html = fetch_html(url)
+    return BeautifulSoup(
+        html,
+        'html.parser'
+    )
+
+
 class ParsedApp:
     BASE_URL = settings.GOOGLE_PLAY_URL
     APP_ID_URL = settings.GOOGLE_PLAY_APP_ID
 
     def __init__(self, app_soup):
         self.app_soup = app_soup
+        self.detail_soup = get_detail_soup(self.url)
 
     @property
     def doc_id(self):
@@ -66,15 +85,29 @@ class ParsedApp:
         return self.developer_selector['title']
 
     @property
+    def developer_email(self):
+        return self.detail_soup.select_one(
+            'a[href^=mailto]')['href'].split(':')[1]
+
+    @property
     def developer_selector(self):
         return self.app_soup.find('a', class_='subtitle')
 
+    @property
+    def screenshots(self):
+        return list(
+            map(
+                lambda x: x['src'],
+                self.detail_soup.findAll('img', class_='screenshot')
+            )
+        )
 
-def fetch_play_html(search_terms):
-    SEARCH_URL = settings.GOOGLE_PLAY_SEARCH_URL
-    URL = SEARCH_URL.format(search_terms)
-    html = requests.get(URL).content
-    return html
+    @property
+    def info(self):
+        info_arr = self.detail_soup.find(
+            'div', class_='show-more-content'
+        ).find('div').contents
+        return ''.join(map(str, info_arr))
 
 
 class PlayParser:
