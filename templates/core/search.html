@@ -1,10 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <form action="search" method="GET">
-        <div class="form-group">
-            <label for="search">Search</label>
-            <input type="search" name="q" class="form-control" id="search" placeholder="Search">
-        </div>
-    </form>
+    <div class="absolute-center">
+        {% include 'core/partials/searchbar.html' %}
+    </div>
 {% endblock %}

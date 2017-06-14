@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <section>
+        {% include 'core/partials/searchbar.html' %}
+    </section>
     <section class="row applist">
         {% for app in apps %}
             {% include "core/partials/appcard.html" with app=app %}
