@@ -3,3 +3,20 @@
 .applist {
     margin-top: 2rem;
 }
+
+.absolute-center {
+    position: relative;
+    margin-top: -2em;
+    top: 50vh;
+    transform: translateY(-50%);
+}
+
+.main {
+    margin-top: 2em;
+}
+
+.link-silent {
+    &:hover, &:focus, &:active {
+        text-decoration: none;
+    }
+}

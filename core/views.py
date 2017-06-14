@@ -1,5 +1,6 @@
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import TemplateView
+from core.models import App
 from core.utils import fetch_apps
 
 
@@ -25,3 +26,9 @@ class AppsView(TemplateView):
 
 class AppView(TemplateView):
     template_name = "core/appdetail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AppView, self).get_context_data(**kwargs)
+        app_id = self.request.GET.get('id')
+        context['app'] = get_object_or_404(App.objects.all(), app_id=app_id)
+        return context
